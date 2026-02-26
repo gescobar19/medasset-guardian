@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    container_name: summitsafe_db
+    environment:
+      POSTGRES_USER: summitsafe
+      POSTGRES_PASSWORD: summitsafe_pw
+      POSTGRES_DB: summitsafe
+    ports:
+      - "5432:5432"
+    volumes:
+      - summitsafe_pgdata:/var/lib/postgresql/data
+
+volumes:
+  summitsafe_pgdata:

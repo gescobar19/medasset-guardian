@@ -1,5 +1,5 @@
-from database import SessionLocal
-from models import Asset, UsageLog, Inspection
+from backend.app.database import SessionLocal
+from backend.app.models import Asset, UsageLog, Inspection
 from datetime import datetime
 
 def seed():
