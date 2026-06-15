@@ -10,11 +10,12 @@ DATABASE_URL = os.getenv(
     "DATABASE_URL",
     "postgresql+psycopg2://summitsafe:summitsafe_pw@localhost:5432/summitsafe"
 )
-
+print("DATABASE_URL =", DATABASE_URL)
 engine = create_engine(
     DATABASE_URL,
     pool_pre_ping=True  # helps prevent stale connections
 )
+print("ENGINE =", engine.url)
 
 SessionLocal = sessionmaker(
     autocommit=False,
