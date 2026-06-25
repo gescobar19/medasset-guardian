@@ -7,9 +7,29 @@ on:
 jobs:
   backend-tests:
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: summitsafe
+          POSTGRES_PASSWORD: summitsafe_pw
+          POSTGRES_DB: summitsafe
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U summitsafe"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      DATABASE_URL: postgresql+psycopg2://summitsafe:summitsafe_pw@localhost:5432/summitsafe
+
     defaults:
       run:
         working-directory: backend
+
     steps:
       - uses: actions/checkout@v4
 
@@ -21,7 +41,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest httpx
+
+      - name: Create database tables
+        run: |
+          python -c "from app.database import Base, engine; from app import models; Base.metadata.create_all(bind=engine)"
 
       - name: Run tests
         run: pytest -q
