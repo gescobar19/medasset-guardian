@@ -30,8 +30,21 @@ class Asset(Base):
 
     date_added = Column(DateTime, default=datetime.utcnow)
 
-    inspections = relationship("Inspection", back_populates="asset")
-    usage_logs = relationship("UsageLog", back_populates="asset")
+    inspections = relationship(
+        "Inspection",
+        back_populates="asset"
+    )
+
+    usage_logs = relationship(
+        "UsageLog",
+        back_populates="asset"
+    )
+
+    maintenance_logs = relationship(
+        "MaintenanceLog",
+        back_populates="asset"
+    )
+    
 
 
 class UsageLog(Base):
@@ -55,3 +68,34 @@ class Inspection(Base):
     date = Column(DateTime, default=datetime.utcnow)
 
     asset = relationship("Asset", back_populates="inspections")
+
+class MaintenanceLog(Base):
+    __tablename__ = "maintenance_logs"
+
+    id = Column(Integer, primary_key=True, index=True)
+
+    asset_id = Column(
+        Integer,
+        ForeignKey("assets.id"),
+        nullable=False
+    )
+
+    technician = Column(
+        String,
+        nullable=False
+    )
+
+    notes = Column(
+        String,
+        nullable=True
+    )
+
+    date = Column(
+        DateTime,
+        default=datetime.utcnow
+    )
+
+    asset = relationship(
+        "Asset",
+        back_populates="maintenance_logs"
+    )
