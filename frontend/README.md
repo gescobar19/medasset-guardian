@@ -1,262 +1,70 @@
-# 🏥 MedAsset Guardian
+# Getting Started with Create React App
 
-A full-stack medical equipment lifecycle management platform for tracking healthcare assets, monitoring operational health, and generating maintenance recommendations through automated risk assessment.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Overview
+## Available Scripts
 
-MedAsset Guardian helps hospitals and healthcare facilities manage critical medical equipment throughout its lifecycle. The application provides centralized inventory management, usage tracking, inspection history, maintenance logging, and automated risk analysis to improve equipment reliability and support preventive maintenance.
+In the project directory, you can run:
 
-The project was built to demonstrate modern full-stack software engineering practices using React, FastAPI, PostgreSQL, Docker, and SQLAlchemy.
+### `npm start`
 
----
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Features
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### Equipment Inventory
-- Register medical equipment
-- View all equipment in a centralized dashboard
-- Track operational status
-- Configure maximum service-life thresholds
+### `npm test`
 
-### Usage Tracking
-- Log equipment usage
-- Monitor cumulative operating cycles
-- Calculate remaining service life
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### Risk Assessment Engine
-- Calculate equipment health scores
-- Determine risk level (Low, Medium, High)
-- Recommend maintenance actions
-- Automatically update equipment status
+### `npm run build`
 
-### Maintenance & Inspection
-- Record maintenance history
-- Store inspection records
-- Track equipment condition over time
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Dashboard
-- Equipment inventory overview
-- Operational status summary
-- Equipment health information
-- Risk assessment reports
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
----
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Tech Stack
+### `npm run eject`
 
-### Frontend
-- React
-- JavaScript
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-### Backend
-- FastAPI
-- SQLAlchemy
-- Alembic
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-### Database
-- PostgreSQL
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-### DevOps
-- Docker
-- Docker Compose
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
----
+## Learn More
 
-## Architecture
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-```
-React Frontend
-       │
- REST API
-       │
-FastAPI Backend
-       │
- SQLAlchemy ORM
-       │
- PostgreSQL
-```
+To learn React, check out the [React documentation](https://reactjs.org/).
 
----
+### Code Splitting
 
-## Database Schema
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-Current entities include:
+### Analyzing the Bundle Size
 
-- Assets
-- Usage Logs
-- Inspections
-- Maintenance Logs
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-Relationships:
+### Making a Progressive Web App
 
-```
-Asset
- ├── Usage Logs
- ├── Inspections
- └── Maintenance Logs
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
----
+### Advanced Configuration
 
-## Risk Assessment
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-The application evaluates equipment health based on lifecycle usage.
+### Deployment
 
-The risk engine calculates:
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-- Health Score (0–100)
-- Remaining Service Life
-- Equipment Status
-- Risk Level
-- Maintenance Recommendation
+### `npm run build` fails to minify
 
-Example output:
-
-```json
-{
-  "health_score": 92,
-  "risk_level": "LOW",
-  "recommended_status": "ACTIVE",
-  "remaining_uses": 4200,
-  "recommendation": "Continue normal operation."
-}
-```
-
----
-
-## Running the Project
-
-### Clone the repository
-
-```bash
-git clone https://github.com/gescobar19/summitsafe.git
-cd summitsafe
-```
-
-### Start PostgreSQL
-
-```bash
-docker compose up -d
-```
-
-### Backend
-
-```bash
-cd backend
-
-python -m venv venv
-
-# Windows
-venv\Scripts\activate
-
-pip install -r requirements.txt
-
-alembic upgrade head
-
-python -m uvicorn app.main:app --reload
-```
-
-Backend runs at:
-
-```
-http://127.0.0.1:8000
-```
-
----
-
-### Frontend
-
-```bash
-cd client
-
-npm install
-
-npm start
-```
-
-Frontend runs at:
-
-```
-http://localhost:3000
-```
-
----
-
-## API Endpoints
-
-### Assets
-
-```
-GET    /assets
-POST   /assets
-```
-
-### Usage
-
-```
-POST   /usage
-```
-
-### Risk Reports
-
-```
-GET    /risk-report/{asset_id}
-```
-
-### Maintenance
-
-```
-POST   /maintenance
-GET    /maintenance/{asset_id}
-```
-
----
-
-## Example Equipment
-
-- Ventilator
-- Infusion Pump
-- Defibrillator
-- MRI Scanner
-- CT Scanner
-- Patient Monitor
-
----
-
-## Future Improvements
-
-- Authentication & user accounts
-- Role-based access control
-- Predictive maintenance using machine learning
-- Maintenance scheduling
-- Equipment calibration tracking
-- Interactive dashboard charts
-- Equipment search and filtering
-- CSV/PDF reporting
-- Notifications for maintenance due dates
-
----
-
-## Learning Objectives
-
-This project demonstrates experience with:
-
-- Full-stack application development
-- REST API design
-- PostgreSQL database design
-- SQLAlchemy ORM
-- Alembic migrations
-- Docker containerization
-- React state management
-- Risk analysis algorithms
-- CRUD application architecture
-
----
-
-## Author
-
-**Genesis Escobar**
-
-- Portfolio: https://gescobar19.github.io
-- GitHub: https://github.com/gescobar19
-- LinkedIn: https://linkedin.com/in/genesis-escobar-3381421b6
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
